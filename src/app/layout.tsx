@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import HeaderNavigationMenu from "@/public/class/HeaderNavigationMenu";
 import Link from "next/link";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -60,7 +61,14 @@ export default function RootLayout({
       <body className={inter.className}>
         <header className="w-full h-16 bg-black opacity-85">
           <nav className="h-full flex justify-center items-center">
-            {/* <img src={Logo} alt="" /> */}
+            <Link href={"/"} className="mr-5">
+              <Image
+                src={"svg/logo-bank-mono-light.svg"}
+                alt={"헤더 로고"}
+                width={118}
+                height={20}
+              />
+            </Link>
             <ul className="flex text-sub">
               {navMenu.map((menu) => (
                 <li key={menu.navId} className="mr-5">
