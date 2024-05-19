@@ -72,7 +72,7 @@ export default function BannerLayout() {
   };
 
   return (
-    <article className="w-full md:w-[664px] md:h-[400px] lg:w-[1008px] lg:h-[440px] 2xl:w-[1352px] relative overflow-hidden rounded-3xl">
+    <article className="w-full md:h-[400px] lg:h-[440px] relative overflow-hidden rounded-3xl mt-24">
       <Banner bannerOrder={bannerOrder} banners={banners} />
       <div className="flex absolute bottom-0 p-14">
         <BannerNavigationButton
