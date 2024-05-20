@@ -2,9 +2,9 @@ export interface MenuI {
   title: string;
   path: string;
   navId: string;
-  subMenus?: {
-    subTitle: string, 
-    menus: MenuI[]
+  submenus?: {
+    submenuTitle: string, 
+    submenuItems: MenuI[]
   }[]
 }
 
@@ -12,15 +12,15 @@ export default class Menu implements MenuI{
   title: string;
   path: string;
   navId: string;
-  subMenus?: {
-    subTitle: string, 
-    menus: MenuI[]
+  submenus?: {
+    submenuTitle: string, 
+    submenuItems: MenuI[]
   }[]
 
-  constructor({title, path, navId, subMenus}: MenuI) {
+  constructor({title, path, navId, submenus}: MenuI) {
     this.title = title;
     this.path = path;
     this.navId = navId;
-    this.subMenus = subMenus;
+    this.submenus = submenus;
   }
 }

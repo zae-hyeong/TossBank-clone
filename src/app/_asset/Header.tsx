@@ -1,16 +1,20 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import Menu from "@/public/class/Menu";
+import Menu, { MenuI } from "@/public/class/Menu";
+import { useState } from "react";
+import SubmenuLayout from "./SubmenuLayout";
 
 const navMenu = [
   new Menu({
     title: "통장",
     path: "/product-service/account",
     navId: "acc1",
-    subMenus: [
+    submenus: [
       {
-        subTitle: "통장",
-        menus: [
+        submenuTitle: "통장",
+        submenuItems: [
           new Menu({ title: "토스뱅크 통장", path: "/1", navId: "asdf1" }),
           new Menu({ title: "나눠모으기 통장", path: "/2", navId: "asdf2" }),
           new Menu({ title: "모임 통장", path: "/3", navId: "asdf3" }),
@@ -25,10 +29,10 @@ const navMenu = [
     title: "예금·적금",
     path: "/product-service/savings",
     navId: "de-sa",
-    subMenus: [
+    submenus: [
       {
-        subTitle: "예금",
-        menus: [
+        submenuTitle: "예금",
+        submenuItems: [
           new Menu({
             title: "이자 받는 정기예금",
             path: "/11",
@@ -38,8 +42,8 @@ const navMenu = [
         ],
       },
       {
-        subTitle: "적금",
-        menus: [
+        submenuTitle: "적금",
+        submenuItems: [
           new Menu({ title: "키워봐요적금", path: "/21", navId: "asdf21" }),
           new Menu({ title: "굴비적금", path: "/22", navId: "asdf22" }),
           new Menu({ title: "자유적금", path: "/23", navId: "asdf23" }),
@@ -52,10 +56,10 @@ const navMenu = [
     title: "대출",
     path: "/product-service/loan",
     navId: "loan",
-    subMenus: [
+    submenus: [
       {
-        subTitle: "대출",
-        menus: [
+        submenuTitle: "대출",
+        submenuItems: [
           new Menu({ title: "신용대출", path: "/11", navId: "asdf11" }),
           new Menu({ title: "마이너스통장", path: "/12", navId: "asdf12" }),
           new Menu({ title: "비상금 대출", path: "/13", navId: "asdf13" }),
@@ -69,8 +73,8 @@ const navMenu = [
         ],
       },
       {
-        subTitle: "갈아타기",
-        menus: [
+        submenuTitle: "갈아타기",
+        submenuItems: [
           new Menu({
             title: "신용대출 갈아타기",
             path: "/21",
@@ -90,10 +94,12 @@ const navMenu = [
     title: "외환",
     path: "/product-service/foreign-exchange",
     navId: "foreign-exchange",
-    subMenus: [
+    submenus: [
       {
-        subTitle: "외환",
-        menus: [new Menu({ title: "외화통장", path: "/1", navId: "asdf1" })],
+        submenuTitle: "외환",
+        submenuItems: [
+          new Menu({ title: "외화통장", path: "/1", navId: "asdf1" }),
+        ],
       },
     ],
   }),
@@ -101,10 +107,10 @@ const navMenu = [
     title: "카드",
     path: "/product-service/card",
     navId: "card",
-    subMenus: [
+    submenus: [
       {
-        subTitle: "카드",
-        menus: [
+        submenuTitle: "카드",
+        submenuItems: [
           new Menu({ title: "체크카드", path: "/1", navId: "asdf1" }),
           new Menu({ title: "모임카드", path: "/2", navId: "asdf2" }),
         ],
@@ -115,10 +121,10 @@ const navMenu = [
     title: "고객센터",
     path: "/customer",
     navId: "service",
-    subMenus: [
+    submenus: [
       {
-        subTitle: "이용안내",
-        menus: [
+        submenuTitle: "이용안내",
+        submenuItems: [
           new Menu({ title: "공지사항", path: "/11", navId: "asdf11" }),
           new Menu({ title: "자주 묻는 질문", path: "/12", navId: "asdf12" }),
           new Menu({ title: "이용시간 안내", path: "/13", navId: "asdf13" }),
@@ -128,8 +134,8 @@ const navMenu = [
         ],
       },
       {
-        subTitle: "소비자보호",
-        menus: [
+        submenuTitle: "소비자보호",
+        submenuItems: [
           new Menu({ title: "소비자보호체계", path: "/21", navId: "asdf21" }),
           new Menu({ title: "소비자보호공시", path: "/22", navId: "asdf22" }),
           new Menu({
@@ -146,8 +152,8 @@ const navMenu = [
         ],
       },
       {
-        subTitle: "자료실",
-        menus: [
+        submenuTitle: "자료실",
+        submenuItems: [
           new Menu({ title: "증명서 진위 확인", path: "/31", navId: "asdf31" }),
           new Menu({ title: "약관", path: "/32", navId: "asdf32" }),
           new Menu({ title: "서식", path: "/33", navId: "asdf33" }),
@@ -161,10 +167,10 @@ const navMenu = [
     title: "은행소개",
     path: "/about/introduce",
     navId: "introduce",
-    subMenus: [
+    submenus: [
       {
-        subTitle: "은행소개",
-        menus: [
+        submenuTitle: "은행소개",
+        submenuItems: [
           new Menu({ title: "공시정보", path: "/11", navId: "asdf11" }),
           new Menu({ title: "재무정보", path: "/12", navId: "asdf12" }),
           new Menu({ title: "공고", path: "/13", navId: "asdf13" }),
@@ -173,14 +179,16 @@ const navMenu = [
         ],
       },
       {
-        subTitle: "주주사소개",
-        menus: [
+        submenuTitle: "주주사소개",
+        submenuItems: [
           new Menu({ title: "주주사소개", path: "/21", navId: "asdf21" }),
         ],
       },
       {
-        subTitle: "윤리강령",
-        menus: [new Menu({ title: "윤리강령", path: "/31", navId: "asdf31" })],
+        submenuTitle: "윤리강령",
+        submenuItems: [
+          new Menu({ title: "윤리강령", path: "/31", navId: "asdf31" }),
+        ],
       },
     ],
   }),
@@ -188,10 +196,10 @@ const navMenu = [
     title: "채용",
     path: "/recruit",
     navId: "rec",
-    subMenus: [
+    submenus: [
       {
-        subTitle: "토스뱅크 채용",
-        menus: [
+        submenuTitle: "토스뱅크 채용",
+        submenuItems: [
           new Menu({ title: "채용 중 공고", path: "/1", navId: "asdf1" }),
           new Menu({
             title: "토스뱅크 더 알아보기",
@@ -205,25 +213,84 @@ const navMenu = [
 ];
 
 export default function Header() {
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const [activeSubmenus, setActiveSubmenus] = useState(navMenu[0].submenus);
+
+  const headerMouseEvent = {
+    mouseOverHandler() {
+      setIsActive(true);
+    },
+    mouseLeaveHandler() {
+      setIsActive(false);
+    },
+  };
+
+  const menuMouseEvent = {
+    mouseOverHandler(menu: MenuI) {
+      setActiveSubmenus(menu.submenus);
+    },
+  };
+
   return (
-    <header className="w-full h-16 bg-black opacity-85 fixed z-10">
-      <nav className="h-full flex justify-center items-center">
-        <Link href={"/"} className="mr-5">
-          <Image
-            src={"svg/logo-bank-mono-light.svg"}
-            alt={"헤더 로고"}
-            width={118}
-            height={20}
-          />
-        </Link>
-        <ul className="flex text-sub">
-          {navMenu.map((menu) => (
-            <li key={menu.navId} className="mr-5">
-              <Link href={menu.path}>{menu.title}</Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </header>
+    <>
+      <header
+        onMouseOver={headerMouseEvent.mouseOverHandler}
+        onMouseLeave={headerMouseEvent.mouseLeaveHandler}
+        className={`w-full h-16 fixed z-10 transition ${
+          isActive ? "bg-black" : "bg-black/85"
+        }`}
+      >
+        <nav className="h-full flex justify-center items-center">
+          <ul className="h-full flex text-sub relative items-center">
+            <HeaderLogo />
+            <NavigationMenu onMouseOver={menuMouseEvent.mouseOverHandler} />
+            <SubmenuLayout isActive={isActive} submenus={activeSubmenus} />
+          </ul>
+        </nav>
+        <div
+          className={`transition-all ${
+            isActive ? "bg-black h-[300px]" : "bg-black/85 h-[0px]"
+          }`}
+        ></div>
+      </header>
+      {isActive && <div className="fixed w-screen h-screen bg-black/40"></div>}
+    </>
+  );
+}
+
+function HeaderLogo() {
+  return (
+    <li className="mr-5 h-5">
+      <Link href={"/"}>
+        <Image
+          src={"svg/logo-bank-mono-light.svg"}
+          alt={"헤더 로고"}
+          width={118}
+          height={20}
+        />
+      </Link>
+    </li>
+  );
+}
+
+function NavigationMenu({
+  onMouseOver,
+}: {
+  onMouseOver: (menu: MenuI) => void;
+}) {
+  return (
+    <>
+      {navMenu.map((menu) => (
+        <li
+          key={menu.navId}
+          onMouseOver={() => {
+            onMouseOver(menu);
+          }}
+          className="mr-7 text-sm hover:text-white"
+        >
+          <Link href={menu.path}>{menu.title}</Link>
+        </li>
+      ))}
+    </>
   );
 }
