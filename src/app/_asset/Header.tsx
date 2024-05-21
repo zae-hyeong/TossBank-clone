@@ -9,13 +9,14 @@ import SubmenuLayout from "./SubmenuLayout";
 const navMenu = [
   new Menu({
     title: "통장",
-    path: "/product-service/account",
+    path: "/product-service",
     navId: "acc1",
     submenus: [
       {
         submenuTitle: "통장",
+        submenuPath: "/savings",
         submenuItems: [
-          new Menu({ title: "토스뱅크 통장", path: "/1", navId: "asdf1" }),
+          new Menu({ title: "토스뱅크 통장", path: "/account", navId: "asdf1" }),
           new Menu({ title: "나눠모으기 통장", path: "/2", navId: "asdf2" }),
           new Menu({ title: "모임 통장", path: "/3", navId: "asdf3" }),
           new Menu({ title: "서브 통장", path: "/4", navId: "asdf4" }),
@@ -32,6 +33,7 @@ const navMenu = [
     submenus: [
       {
         submenuTitle: "예금",
+        submenuPath: "/savings",
         submenuItems: [
           new Menu({
             title: "이자 받는 정기예금",
@@ -43,6 +45,7 @@ const navMenu = [
       },
       {
         submenuTitle: "적금",
+        submenuPath: "/savings",
         submenuItems: [
           new Menu({ title: "키워봐요적금", path: "/21", navId: "asdf21" }),
           new Menu({ title: "굴비적금", path: "/22", navId: "asdf22" }),
@@ -59,6 +62,7 @@ const navMenu = [
     submenus: [
       {
         submenuTitle: "대출",
+        submenuPath: "/savings",
         submenuItems: [
           new Menu({ title: "신용대출", path: "/11", navId: "asdf11" }),
           new Menu({ title: "마이너스통장", path: "/12", navId: "asdf12" }),
@@ -74,6 +78,7 @@ const navMenu = [
       },
       {
         submenuTitle: "갈아타기",
+        submenuPath: "/savings",
         submenuItems: [
           new Menu({
             title: "신용대출 갈아타기",
@@ -97,6 +102,7 @@ const navMenu = [
     submenus: [
       {
         submenuTitle: "외환",
+        submenuPath: "/savings",
         submenuItems: [
           new Menu({ title: "외화통장", path: "/1", navId: "asdf1" }),
         ],
@@ -105,11 +111,12 @@ const navMenu = [
   }),
   new Menu({
     title: "카드",
-    path: "/product-service/card",
+    path: "/product-service",
     navId: "card",
     submenus: [
       {
         submenuTitle: "카드",
+        submenuPath: "/card",
         submenuItems: [
           new Menu({ title: "체크카드", path: "/1", navId: "asdf1" }),
           new Menu({ title: "모임카드", path: "/2", navId: "asdf2" }),
@@ -124,6 +131,7 @@ const navMenu = [
     submenus: [
       {
         submenuTitle: "이용안내",
+        submenuPath: "/savings",
         submenuItems: [
           new Menu({ title: "공지사항", path: "/11", navId: "asdf11" }),
           new Menu({ title: "자주 묻는 질문", path: "/12", navId: "asdf12" }),
@@ -135,6 +143,7 @@ const navMenu = [
       },
       {
         submenuTitle: "소비자보호",
+        submenuPath: "/savings",
         submenuItems: [
           new Menu({ title: "소비자보호체계", path: "/21", navId: "asdf21" }),
           new Menu({ title: "소비자보호공시", path: "/22", navId: "asdf22" }),
@@ -153,6 +162,7 @@ const navMenu = [
       },
       {
         submenuTitle: "자료실",
+        submenuPath: "/savings",
         submenuItems: [
           new Menu({ title: "증명서 진위 확인", path: "/31", navId: "asdf31" }),
           new Menu({ title: "약관", path: "/32", navId: "asdf32" }),
@@ -170,6 +180,7 @@ const navMenu = [
     submenus: [
       {
         submenuTitle: "은행소개",
+        submenuPath: "/savings",
         submenuItems: [
           new Menu({ title: "공시정보", path: "/11", navId: "asdf11" }),
           new Menu({ title: "재무정보", path: "/12", navId: "asdf12" }),
@@ -180,12 +191,14 @@ const navMenu = [
       },
       {
         submenuTitle: "주주사소개",
+        submenuPath: "/savings",
         submenuItems: [
           new Menu({ title: "주주사소개", path: "/21", navId: "asdf21" }),
         ],
       },
       {
         submenuTitle: "윤리강령",
+        submenuPath: "/savings",
         submenuItems: [
           new Menu({ title: "윤리강령", path: "/31", navId: "asdf31" }),
         ],
@@ -199,6 +212,7 @@ const navMenu = [
     submenus: [
       {
         submenuTitle: "토스뱅크 채용",
+        submenuPath: "/savings",
         submenuItems: [
           new Menu({ title: "채용 중 공고", path: "/1", navId: "asdf1" }),
           new Menu({
@@ -214,7 +228,7 @@ const navMenu = [
 
 export default function Header() {
   const [isActive, setIsActive] = useState<boolean>(false);
-  const [activeSubmenus, setActiveSubmenus] = useState(navMenu[0].submenus);
+  const [activeSubmenus, setActiveSubmenus] = useState({submenuRootPath:'', submenus: navMenu[0].submenus});
 
   const headerMouseEvent = {
     mouseOverHandler() {
@@ -227,7 +241,7 @@ export default function Header() {
 
   const menuMouseEvent = {
     mouseOverHandler(menu: MenuI) {
-      setActiveSubmenus(menu.submenus);
+      setActiveSubmenus({submenuRootPath: menu.path, submenus: menu.submenus});
     },
   };
 
@@ -244,7 +258,7 @@ export default function Header() {
           <ul className="h-full flex text-sub relative items-center">
             <HeaderLogo />
             <NavigationMenu onMouseOver={menuMouseEvent.mouseOverHandler} />
-            <SubmenuLayout isActive={isActive} submenus={activeSubmenus} />
+            <SubmenuLayout isActive={isActive} submenus={activeSubmenus.submenus} rootPath={activeSubmenus.submenuRootPath} />
           </ul>
         </nav>
         <div
@@ -276,7 +290,7 @@ function HeaderLogo() {
 function NavigationMenu({
   onMouseOver,
 }: {
-  onMouseOver: (menu: MenuI) => void;
+  onMouseOver: (menu: MenuI) => void; 
 }) {
   return (
     <>
@@ -286,9 +300,9 @@ function NavigationMenu({
           onMouseOver={() => {
             onMouseOver(menu);
           }}
-          className="mr-7 text-sm hover:text-white"
+          className="mr-7 text-sm hover:text-white cursor-pointer"
         >
-          <Link href={menu.path}>{menu.title}</Link>
+          {menu.title}
         </li>
       ))}
     </>

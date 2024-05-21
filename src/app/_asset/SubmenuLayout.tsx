@@ -4,9 +4,11 @@ import Link from "next/link";
 export default function SubmenuLayout({
   isActive,
   submenus,
+  rootPath
 }: {
   isActive: boolean;
-  submenus: { submenuTitle: string; submenuItems: MenuI[] }[] | undefined;
+  submenus: { submenuTitle: string; submenuItems: MenuI[]; submenuPath: string }[] | undefined;
+  rootPath: string;
 }) {
   return (
     <li className="w-full absolute top-full">
@@ -16,7 +18,7 @@ export default function SubmenuLayout({
         }`}
       >
         {submenus?.map((submenu) => (
-          <Submenu key={submenu.submenuTitle} submenu={submenu} />
+          <Submenu key={submenu.submenuTitle} submenu={submenu} rootPath={rootPath+submenu.submenuPath} />
         ))}
       </ul>
     </li>
@@ -25,36 +27,38 @@ export default function SubmenuLayout({
 
 function Submenu({
   submenu,
+  rootPath
 }: {
   submenu: { submenuTitle: string; submenuItems: MenuI[] };
+  rootPath: string;
 }) {
   return (
     <li className="w-1/3">
-      <Link href={submenu.submenuItems[0].path}>
+      <Link href={`${rootPath}${submenu.submenuItems[0].path}`}>
         <span className="block text-sm text-sub my-2 hover:text-main">
           {submenu.submenuTitle}
         </span>
       </Link>
-      <SubmenuItemLayout submenuItems={submenu.submenuItems} />
+      <SubmenuItemLayout submenuItems={submenu.submenuItems} rootPath={rootPath}/>
     </li>
   );
 }
 
-function SubmenuItemLayout({ submenuItems }: { submenuItems: MenuI[] }) {
+function SubmenuItemLayout({ submenuItems, rootPath }: { submenuItems: MenuI[], rootPath:string }) {
   return (
     <ul>
       {submenuItems.map((submenuItem) => (
-        <SubmenuItem key={submenuItem.navId} submenuItem={submenuItem} />
+        <SubmenuItem key={submenuItem.navId} submenuItem={submenuItem} rootPath={rootPath} />
       ))}
     </ul>
   );
 }
 
-function SubmenuItem({ submenuItem }: { submenuItem: MenuI }) {
+function SubmenuItem({ submenuItem, rootPath }: { submenuItem: MenuI, rootPath:string }) {
   return (
     <>
       <li className="text-lg text-white hover:text-main font-semibold my-3">
-        <Link href={submenuItem.path}>{submenuItem.title}</Link>
+        <Link href={`${rootPath}${submenuItem.path}`}>{submenuItem.title}</Link>
       </li>
     </>
   );
