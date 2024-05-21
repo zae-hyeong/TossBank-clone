@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={inter.className + " bg-black  overflow-y-scroll scrollbar"}>
+      <body className={inter.className + " overflow-y-scroll scrollbar"}>
         <Header />
         {children}
       </body>
