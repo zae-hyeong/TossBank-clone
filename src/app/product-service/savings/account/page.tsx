@@ -44,7 +44,7 @@ export default function Account() {
       <MainLayout>
         <video width="320" height="240" loop >
           <source src="/public/video/account-advantage-1.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
+          Your browser does not support the video
         </video>
       </MainLayout>
       <MainLayout>
