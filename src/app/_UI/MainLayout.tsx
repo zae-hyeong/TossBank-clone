@@ -1,10 +1,15 @@
-
-export default function MainLayout({children, bgColor="white"}: {children: React.ReactNode, bgColor?:string }) {
+export default function MainLayout({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <div className={bgColor}>
-      <main className="flex flex-col justify-center items-center md:w-[664px] lg:w-[1008px] 2xl:w-[1352px] mx-auto">
+    <div className={className}>
+      <div className="flex flex-col justify-center items-center md:w-[664px] lg:w-[1008px] 2xl:w-[1352px] mx-auto">
         {children}
-      </main>
+      </div>
     </div>
   );
 }

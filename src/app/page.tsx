@@ -4,7 +4,7 @@ import FeedLayout from "./_asset/FeedLayout";
 
 export default function Home() {
   return (
-    <MainLayout  bgColor="bg-black">
+    <MainLayout className="bg-black">
       <BannerLayout />
       <FeedLayout />
     </MainLayout>

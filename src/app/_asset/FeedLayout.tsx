@@ -42,7 +42,7 @@ const feedDatas = [
   }),
   new FeedData({
     title: "한국장학재단 생활비대출을 알아보아요",
-    category: "",
+    category: "대출",
     site: "토스뱅크",
     thumbnail: new ImageData(feedImg5, "feed5"),
     link: "#",
@@ -56,7 +56,7 @@ const feedDatas = [
   }),
   new FeedData({
     title: "로또·연금복권 담첨번호, 확률, 실수령액을 알아보아요",
-    category: "",
+    category: "일상",
     site: "토스뱅크",
     thumbnail: new ImageData(feedImg7, "feed7"),
     link: "#",
@@ -91,7 +91,7 @@ const feedDatas = [
   }),
   new FeedData({
     title: "한국장학재단 생활비대출을 알아보아요",
-    category: "",
+    category: "대출",
     site: "토스뱅크",
     thumbnail: new ImageData(feedImg5, "feed5"),
     link: "#",
@@ -105,7 +105,7 @@ const feedDatas = [
   }),
   new FeedData({
     title: "로또·연금복권 담첨번호, 확률, 실수령액을 알아보아요",
-    category: "",
+    category: "일상",
     site: "토스뱅크",
     thumbnail: new ImageData(feedImg7, "feed7"),
     link: "#",
@@ -140,7 +140,7 @@ const feedDatas = [
   }),
   new FeedData({
     title: "한국장학재단 생활비대출을 알아보아요",
-    category: "",
+    category: "대출",
     site: "토스뱅크",
     thumbnail: new ImageData(feedImg5, "feed5"),
     link: "#",
@@ -154,7 +154,7 @@ const feedDatas = [
   }),
   new FeedData({
     title: "로또·연금복권 담첨번호, 확률, 실수령액을 알아보아요",
-    category: "",
+    category: "일상",
     site: "토스뱅크",
     thumbnail: new ImageData(feedImg7, "feed7"),
     link: "#",
@@ -189,7 +189,7 @@ const feedDatas = [
   }),
   new FeedData({
     title: "한국장학재단 생활비대출을 알아보아요",
-    category: "",
+    category: "대출",
     site: "토스뱅크",
     thumbnail: new ImageData(feedImg5, "feed5"),
     link: "#",
@@ -203,7 +203,7 @@ const feedDatas = [
   }),
   new FeedData({
     title: "로또·연금복권 담첨번호, 확률, 실수령액을 알아보아요",
-    category: "",
+    category: "일상",
     site: "토스뱅크",
     thumbnail: new ImageData(feedImg7, "feed7"),
     link: "#",

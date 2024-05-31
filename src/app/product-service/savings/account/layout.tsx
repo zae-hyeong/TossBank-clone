@@ -3,8 +3,5 @@ export default function AccountLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <>{children}
-    </>
-  );
+  return <main className="bg-white">{children}</main>;
 }
