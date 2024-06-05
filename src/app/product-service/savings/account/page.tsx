@@ -5,6 +5,7 @@ import benefitIconImage2 from "@/img/account/account-advantage-icon-2.png";
 import benefitIconImage3 from "@/img/account/account-advantage-icon-3.png";
 import benefitImage from "@/img/account/account-advantage-2.png";
 import MainLayout from "@/app/_UI/MainLayout";
+import NextVideo from "next-video";
 
 export default function Account() {
   return (
@@ -42,19 +43,41 @@ export default function Account() {
         </div>
       </MainLayout>
       <MainLayout>
-        <video width="320" height="240" loop >
-          <source src="/public/video/account-advantage-1.mp4" type="video/mp4" />
-          Your browser does not support the video
-        </video>
+        <div className="flex">
+          <div className="w-96 h-96">
+            <NextVideo
+              src={"/video/account-advantage-1.mp4"}
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls={false}
+              className="h-full"
+            ></NextVideo>
+          </div>
+          <div>
+            <h3 className="whitespace-pre-line text-5xl font-bold mb-8 leading-snug">
+              {"이제 큰 금액도\n간편하고 안전하게"}
+            </h3>
+            <span className="text-gray-700 whitespace-pre-line text-lg">{`1회 최대 10억원까지 돈을 보낼 수 있어요\nOTP 기기 없이 토스뱅크카드만 있으면 돼요`}</span>
+          </div>
+        </div>
       </MainLayout>
       <MainLayout>
         <div className="flex">
           <div>
-            <h3 className="whitespace-pre-line">{"모든 수수료 완전\n무료"}</h3>
-            <span className="text-gray-700 whitespace-pre-line">
+            <h3 className="whitespace-pre-line text-5xl font-bold mb-8 leading-snug">
+              {"모든 수수료 완전\n무료"}
+            </h3>
+            <span className="text-gray-700 whitespace-pre-line text-lg">
               {"송금, ATM 입출금, 증명서까지,\n어떤 수수료도 없어요."}
             </span>
           </div>
+          <img
+            src={"https://static.toss.im/3d/number-0-apng.png"}
+            alt={""}
+            className="w-96"
+          />
           {/* <Image src={benefitImage} alt={""} /> */}
         </div>
       </MainLayout>
