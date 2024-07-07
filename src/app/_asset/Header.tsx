@@ -250,7 +250,7 @@ export default function Header() {
       <header
         onMouseOver={headerMouseEvent.mouseOverHandler}
         onMouseLeave={headerMouseEvent.mouseLeaveHandler}
-        className={`w-full h-16 fixed z-10 transition ${
+        className={`w-full h-16 fixed z-50 transition ${
           isActive ? "bg-black" : "bg-black/85"
         }`}
       >
@@ -267,7 +267,7 @@ export default function Header() {
           }`}
         ></div>
       </header>
-      {isActive && <div className="fixed w-screen h-screen bg-black/40"></div>}
+      {isActive && <div className="fixed w-screen h-screen bg-black/40 z-40"></div>}
     </>
   );
 }
