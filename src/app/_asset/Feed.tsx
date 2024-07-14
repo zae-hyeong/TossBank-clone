@@ -19,7 +19,7 @@ function MetaDataItem({
 export default function Feed({feed}: {feed:FeedI}) {
   return (
     <li className="w-full lg:w-80 group mb-10">
-      <Link href={feed.link}>
+      <Link href={`articles/${feed.link}`}>
         <Image
           src={feed.thumbnail.src}
           alt={feed.thumbnail.alt}
