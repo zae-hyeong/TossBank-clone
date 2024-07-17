@@ -3,5 +3,5 @@ export default function LoanInterest2Layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  return <div className="bg-black">{children}</div>;
 }
