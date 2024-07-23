@@ -42,3 +42,11 @@
     background: #c0a0b9;
   }
 }
+
+@layer components {
+  .flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
