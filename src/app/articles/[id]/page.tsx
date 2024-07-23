@@ -3,6 +3,7 @@ import Image from "next/image";
 import * as React from "react";
 import { feedDatas } from "@/ServerRequest/dummyArticleData";
 import RelatedFeeds from "../_assets/RelatedFeeds";
+import Footer from "@/app/_asset/Footer";
 
 export interface ILoanInterest2Props {
   params: { id: string };
@@ -50,6 +51,7 @@ export default function LoanInterest2(props: ILoanInterest2Props) {
         </div>
       </MainLayout>
       <RelatedFeeds />
+      <Footer />
     </>
   );
 }
