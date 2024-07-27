@@ -5,6 +5,8 @@ import Image from "next/image";
 import Menu, { MenuI } from "@/public/class/Menu";
 import { useState } from "react";
 import SubmenuLayout from "./SubmenuLayout";
+import HeaderIcon from "@/public/svg/HeaderIcon";
+import HeaderIcon2 from "@/svg/logo-bank-mono-light.svg";
 
 const navMenu = [
   new Menu({
@@ -276,12 +278,13 @@ function HeaderLogo() {
   return (
     <li className="mr-5 h-5">
       <Link href={"/"}>
-        <Image
-          src={"svg/logo-bank-mono-light.svg"}
+        {/* <Image
+          src={HeaderIcon2}
           alt={"헤더 로고"}
           width={118}
           height={20}
-        />
+        /> */}
+        <HeaderIcon/>
       </Link>
     </li>
   );

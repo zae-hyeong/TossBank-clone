@@ -3,6 +3,7 @@ import titleImage from "@/img/account/account-general.png";
 import benefitIconImage1 from "@/img/account/account-advantage-icon-1.png";
 import benefitIconImage2 from "@/img/account/account-advantage-icon-2.png";
 import benefitIconImage3 from "@/img/account/account-advantage-icon-3.png";
+// import loopVideo from "@/video/";
 import benefitImage from "@/img/account/account-advantage-2.png";
 import MainLayout from "@/app/_UI/MainLayout";
 import NextVideo from "next-video";
@@ -78,9 +79,13 @@ export default function Account() {
             alt={""}
             className="w-96"
           />
-          {/* <Image src={benefitImage} alt={""} /> */}
         </div>
       </MainLayout>
+      {/* TODO: 펼쳐지도록 만들기 */}
+      <div className="mx-24 mt-36"><div className="w-full rounded-lg bg-gray-100 p-5 hover:bg-gray-200">
+        <h5 className="font-bold">상품안내</h5>
+      </div></div>
+      
     </>
   );
 }

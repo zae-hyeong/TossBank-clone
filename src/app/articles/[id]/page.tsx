@@ -1,7 +1,7 @@
 import MainLayout from "@/app/_UI/MainLayout";
 import Image from "next/image";
 import * as React from "react";
-import { feedDatas } from "@/ServerRequest/dummyArticleData";
+import { feedDatas } from "@/dummyData/dummyArticleData";
 import RelatedFeeds from "../_assets/RelatedFeeds";
 import Footer from "@/app/_asset/Footer";
 

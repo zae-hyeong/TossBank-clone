@@ -1,5 +1,5 @@
 import Feed from "@/app/_asset/Feed";
-import { feedDatas } from "@/ServerRequest/dummyArticleData";
+import { feedDatas } from "@/dummyData/dummyArticleData";
 import * as React from "react";
 
 export interface IRelatedFeedsProps {}

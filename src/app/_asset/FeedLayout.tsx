@@ -1,5 +1,5 @@
 import Feed from "./Feed";
-import { feedDatas } from "@/ServerRequest/dummyArticleData";
+import { feedDatas } from "@/dummyData/dummyArticleData";
 
 const feed = feedDatas;
 
