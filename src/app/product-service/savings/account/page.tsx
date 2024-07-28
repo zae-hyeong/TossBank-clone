@@ -87,7 +87,6 @@ export default function Account() {
           />
         </div>
       </MainLayout>
-      {/* TODO: 펼쳐지도록 만들기 */}
       <ul className="mx-24 mt-36">
         <DetailDescription title={"상품안내"} />
         <DetailDescription title={"금리정보"} />
