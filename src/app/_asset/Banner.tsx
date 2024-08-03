@@ -1,36 +1,31 @@
+import { useRef } from "react";
 import BannerItem from "./BannerItem";
+import BannerClass from "@/public/class/Banner";
 import { BannerI as BannerClassI } from "@/public/class/Banner";
 
 interface BannerI {
-  bannerOrder: { prev: number; current: number; next: number };
+  offset: number;
   banners: BannerClassI[];
+  unableTransition: boolean;
 }
 
 export default function Banner({
-  bannerOrder,
+  offset,
   banners,
+  unableTransition
 }: BannerI): React.ReactNode {
+
   return (
     <ul className="flex w-full h-full">
       {banners.map((banner, index) => {
-        if (index === bannerOrder.prev)
-          return (
-            <BannerItem
-              banner={banner}
-              key={banner.id}
-              className="-translate-x-full"
-            />
-          );
-        if (index === bannerOrder.current)
-          return <BannerItem banner={banner} key={banner.id} className="" />;
-        if (index === bannerOrder.next)
-          return (
-            <BannerItem
-              banner={banner}
-              key={banner.id}
-              className="translate-x-full"
-            />
-          );
+        return (
+          <BannerItem
+            banner={banner}
+            key={banner.id}
+            position={100 * (index - offset)}
+            unableTransition={unableTransition}
+          />
+        );
       })}
     </ul>
   );

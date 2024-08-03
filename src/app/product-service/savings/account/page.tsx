@@ -44,7 +44,7 @@ export default function Account() {
         </div>
       </MainLayout>
       <MainLayout>
-        <div className="flex">
+        <div className="flex mt-10">
           <div className="w-96 h-96">
             <NextVideo
               src={"/video/account-advantage-1.mp4"}
@@ -65,7 +65,7 @@ export default function Account() {
         </div>
       </MainLayout>
       <MainLayout>
-        <div className="flex">
+        <div className="flex mt-10">
           <div>
             <h3 className="whitespace-pre-line text-5xl font-bold mb-8 leading-snug">
               {"모든 수수료 완전\n무료"}
