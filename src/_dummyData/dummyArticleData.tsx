@@ -5,6 +5,8 @@ import feedImg4 from "@/public/image/feed/dummy-feed-cover-4.jpg";
 import feedImg5 from "@/public/image/feed/dummy-feed-cover-5.jpg";
 import feedImg6 from "@/public/image/feed/dummy-feed-cover-6.jpg";
 import feedImg7 from "@/public/image/feed/dummy-feed-cover-7.jpg";
+import newsImg1 from "@/img/feed/dummy-news-cover-1.jpg"
+import newsImg2 from "@/img/feed/dummy-news-cover-2.png"
 import { default as FeedData } from "@/public/class/Feed";
 import ImageData from "@/public/class/ImagaData";
 
@@ -16,6 +18,14 @@ export const feedDatas = [
     site: "토스뱅크",
     thumbnail: new ImageData(feedImg1, "feed1"),
     link: "loaninterest2",
+  }),
+  new FeedData({
+    title: "미국, 이더리움 현물 ETF 승인...비트코인 후 6개월만",
+    category: "투자",
+    site: "한경BUSINESS",
+    thumbnail: new ImageData(newsImg1, "news 1"),
+    link: "https://magazine.hankyung.com/business/article/202407233109b",
+    isExternalLink: true,
   }),
   new FeedData({
     title: "코스피 코스닥 차이를 알아보아요",
@@ -51,6 +61,14 @@ export const feedDatas = [
     site: "토스뱅크",
     thumbnail: new ImageData(feedImg6, "feed6"),
     link: "#",
+  }),
+  new FeedData({
+    title: `토스뱅크 "올 1분기 중저신용자 비중 36.33%"`,
+    category: "토스뱅크 뉴스",
+    site: "아주경제",
+    thumbnail: new ImageData(newsImg2, "news 2"),
+    link: "https://www.ajunews.com/view/20240524152137141",
+    isExternalLink: true,
   }),
   new FeedData({
     title: "로또·연금복권 담첨번호, 확률, 실수령액을 알아보아요",

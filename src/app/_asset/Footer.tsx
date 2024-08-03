@@ -3,7 +3,7 @@ import * as React from "react";
 
 export default function Footer() {
   return (
-    <div className="border-t w-full border-gray-800 text-gray-500 pt-12 pb-20 px-10">
+    <div className="border-t w-full bg-[#0b0b0d] border-gray-800 text-gray-500 pt-12 pb-20 px-10">
       <div className="flex text-sm">
         <div className="flex flex-col mr-12">
           <FooterTitle>고객센터</FooterTitle>

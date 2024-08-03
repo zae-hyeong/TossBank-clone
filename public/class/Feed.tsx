@@ -28,7 +28,7 @@ export default class Feed implements FeedI {
     site,
     title,
     date = new Date(),
-    isExternalLink = true,
+    isExternalLink = false,
   }: FeedI) {
     this.title = title;
     this.thumbnail = thumbnail;
