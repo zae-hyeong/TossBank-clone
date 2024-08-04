@@ -1,22 +1,16 @@
 import { BannerI } from "@/public/class/Banner";
 import Link from "next/link";
 import Image from "next/image";
+import { SwiperSlide } from "swiper/react";
 
 export default function BannerItem({
   banner,
-  className,
-  position,
-  unableTransition
 }: Readonly<{
   banner: BannerI;
-  className?: string;
-  position: number;
-  unableTransition: boolean;
 }>): React.ReactNode {
   return (
-    <li
-      style={unableTransition ? {translate: `${position}%`} : {translate: `${position}%`, transition: 'translate ease-in-out 0.8s'}}
-      className={`w-full h-full shrink-0 absolute ${className}`}
+    <SwiperSlide
+      className={`w-full h-full`}
     >
       <Link href={"#"}>
         <h1 className="whitespace-pre-line text-white text-5xl p-14 font-bold z-10 relative">
@@ -31,6 +25,6 @@ export default function BannerItem({
           className="absolute h-full object-cover top-0"
         />
       </Link>
-    </li>
+    </SwiperSlide>
   );
 }

@@ -1,32 +1,53 @@
 import { useRef } from "react";
-import BannerItem from "./BannerItem";
-import BannerClass from "@/public/class/Banner";
 import { BannerI as BannerClassI } from "@/public/class/Banner";
-
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import Link from "next/link";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 interface BannerI {
-  offset: number;
   banners: BannerClassI[];
-  unableTransition: boolean;
 }
 
-export default function Banner({
-  offset,
-  banners,
-  unableTransition
-}: BannerI): React.ReactNode {
-
+export default function Banner({ banners }: BannerI): React.ReactNode {
   return (
-    <ul className="flex w-full h-full">
-      {banners.map((banner, index) => {
-        return (
-          <BannerItem
-            banner={banner}
-            key={banner.id}
-            position={100 * (index - offset)}
-            unableTransition={unableTransition}
-          />
-        );
-      })}
-    </ul>
+    <Swiper
+      slidesPerView={1}
+      spaceBetween={0}
+      loop={true}
+      navigation={true}
+      modules={[Navigation]}
+      className="mySwiper bg-white h-full"
+    >
+      {banners.map((banner) => (
+        <SwiperSlide key={banner.id}>
+          <BannerItem banner={banner} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
+}
+
+function BannerItem({
+  banner,
+}: Readonly<{
+  banner: BannerClassI;
+}>): React.ReactNode {
+  return (
+    <Link href={"#"}>
+      <h1 className="whitespace-pre-line text-white text-5xl p-14 font-bold z-10 relative">
+        {banner.title}
+      </h1>
+      {banner.subtitle && (
+        <h2 className="text-sub pl-14 relative z-10">{banner.subtitle}</h2>
+      )}
+      <Image
+        src={banner.imageData.src}
+        alt={banner.imageData.alt}
+        className="absolute h-full object-cover top-0"
+      />
+    </Link>
   );
 }
