@@ -1,12 +1,10 @@
-import { useRef } from "react";
 import { BannerI as BannerClassI } from "@/public/class/Banner";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+
 interface BannerI {
   banners: BannerClassI[];
 }
@@ -17,9 +15,12 @@ export default function Banner({ banners }: BannerI): React.ReactNode {
       slidesPerView={1}
       spaceBetween={0}
       loop={true}
-      navigation={true}
+      navigation={{
+        prevEl: ".prev-banner",
+        nextEl: ".next-banner",
+      }}
       modules={[Navigation]}
-      className="mySwiper bg-white h-full"
+      className="bg-white h-full"
     >
       {banners.map((banner) => (
         <SwiperSlide key={banner.id}>
